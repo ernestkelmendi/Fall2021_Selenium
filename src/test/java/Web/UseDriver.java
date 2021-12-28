@@ -7,7 +7,7 @@ public class UseDriver {
     static WebDriver driver;
 
     public static void openUrl(String url) {
-        System.setProperty("webdriver.chrome.driver" , "Drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get(url);
     }
