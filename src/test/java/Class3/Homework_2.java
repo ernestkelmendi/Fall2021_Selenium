@@ -3,8 +3,11 @@ package Class3;
 import Web.UseDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+
 
 import javax.swing.*;
 
@@ -22,25 +25,22 @@ public class Homework_2 {
      * Link --> Find your account and log in.
      */
 
+
     @Test
-    public void useLocators() {
+    public void useLinkLocators() {
+        System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");
+        ChromeDriver driver = new ChromeDriver();
+        String url = "https://www.facebook.com/";
+        driver.get(url);
 
-        UseDriver.openUrl("https://www.facebook.com/");
+        driver.get("https://www.facebook.com/");
+        driver.findElement(By.id("email")).sendKeys("testlogin@test.com");
+        driver.findElement(By.id("pass")).sendKeys("asdt@1234");
+        driver.findElement(By.tagName("button")).click();
 
-        String loginEmailIdValue = "email";
-        By loginEmailLocator = By.id(loginEmailIdValue);
-        WebElement loginEmailBox = UseDriver.getDriver().findElement(loginEmailLocator);
-        loginEmailBox.sendKeys("%^&&*()");
 
-        String loginPassNameValue = "pass";
-        By loginPassLocator = By.name(loginPassNameValue);
-        WebElement loginPassBox = UseDriver.getDriver().findElement(loginPassLocator);
-        loginPassBox.sendKeys("abcd@1234");
 
-        String loginButtonTag = "button";
-        By loginButtonLocator = By.tagName(loginButtonTag);
-        WebElement loginButton = UseDriver.getDriver().findElement(loginButtonLocator);
-        loginButton.click();
+
 
     }
 
@@ -57,22 +57,19 @@ public class Homework_2 {
         @Test
         public void useLocators2() {
 
-            UseDriver.openUrl("https://www.messenger.com/");
+            System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");
+            ChromeDriver driver = new ChromeDriver();
+            String url = "https://www.facebook.com/";
+            driver.get(url);
 
-            String loginButtonTag = "button";
-            By loginButtonLocator = By.tagName(loginButtonTag);
-            WebElement loginButton = UseDriver.getDriver().findElement(loginButtonLocator);
-            loginButton.click();
+            // driver.findElement(By.linkText("a Page"));
 
-            String loginEmailIdValue = "";
-            By loginEmailLocator = By.id(loginEmailIdValue);
-            WebElement loginEmailBox = UseDriver.getDriver().findElement(loginEmailLocator);
-            loginEmailBox.sendKeys("");
+            String partialTextCreatePage = "a Page";
+            By createPageLocator = By.partialLinkText(partialTextCreatePage);
+            driver.findElement(By.id("Check Out Messenger")).click();
+            driver.findElement(By.name("login")).click();
 
-            String loginPassNameValue = "";
-            By loginPassLocator = By.name(loginPassNameValue);
-            WebElement loginPassBox = UseDriver.getDriver().findElement(loginPassLocator);
-            loginPassBox.sendKeys("");
+
 
 
         }
